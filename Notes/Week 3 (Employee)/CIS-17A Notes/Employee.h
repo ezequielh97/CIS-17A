@@ -10,6 +10,10 @@ private:
 	int year;
 
 public:
+    //CONSTRUCTORS
+    Employee(); // Default
+    Employee(std::string, std::string, double, int); // Constructor
+
 	//GETTERS
 	std::string getName() const;
 	std::string getId() const;
