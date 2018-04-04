@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\ncc\documents\visual studio 2015\projects\project1\project1\main.cpp(74): warning C4018: '<': signed/unsigned mismatch
+  Project1.vcxproj -> c:\Users\ncc\documents\visual studio 2015\Projects\Project1\Debug\Midterm.exe
+  Project1.vcxproj -> c:\Users\ncc\documents\visual studio 2015\Projects\Project1\Debug\Midterm.pdb (Partial PDB)
