@@ -25,7 +25,10 @@ int main()
         cin >> days[i];
     }
     
-    display(numDays, days, wage);
+    display(numDays, days, wage); // Calls display function
+    
+    delete [] days; // Deallocates the days array
+    days = NULL; // Sets the days pointer equal to nothing
     
 } // End main
 
@@ -36,10 +39,10 @@ void display(int size, double array[], double wage)
     
     for(int i = 0; i < size; i++)
     {
-        cout << "Day " << i + 1 << ": " << array[i] << " hours ($" << array[i] * wage << endl;
+        cout << "Day " << i + 1 << ": " << array[i] << " hours ($" << array[i] * wage << ")" << endl;
         hours += array[i]; // Adds the day's hours to the running total
     }
     
-    double total = hours * wage;
+    double total = hours * wage; // Adds up the total net income
     cout << "Your net income this pay period is $" << total << endl;
 }
