@@ -12,7 +12,7 @@ private:
 public:
     Menu();
     Menu(int, char, int, int);
-    ~Menu();
+    ~Menu()
 
     void setPlayers(int);
     void setGameMode(char);
