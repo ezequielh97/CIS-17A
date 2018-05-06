@@ -7,7 +7,7 @@ using namespace std;
 class Menu
 {
 private:
-    char gameMode;
+    int gameMode;
     int max;
 
 public:
@@ -15,10 +15,10 @@ public:
     Menu();
    
     // SETTERS:
-    void setGameMode(char);
+    void setGameMode(int);
     void setMax(int);
     // GETTERS
-    char getGameMode();
+    int getGameMode();
     int getMax();
     // MISC:
     void display();
@@ -45,22 +45,24 @@ Menu::Menu()
            
            
            
-           if(gameMode == 'A' || gameMode == 'B')
+           if(gameMode == 1 || gameMode == 2)
+           { 
                setGameMode(gameMode);
-           if(choice == 'C')
+           }
+           if(gameMode == 3)
                edit();
     }
 
 void Menu::display()
     {
         cout << "MENU:" << endl;
-	cout << "[A] - Single Die Mode" << endl;
-	cout << "[B] - Double Dice Mode" << endl;
-	cout << "[C] - Change Game Settings" << endl;
-	cout << "Enter Choice: ";
+        cout << "[1] - Single Player Mode" << endl;
+        cout << "[2] - Multiplayer Mode" << endl;
+        cout << "[3] - Change Game Settings" << endl;
+        cout << "Enter Choice: ";
     }
 
-void Menu::setGameMode(char mode)
+void Menu::setGameMode(int mode)
 {
     gameMode = mode;
 }
@@ -70,7 +72,7 @@ void Menu::setMax(int max)
     this->max = max;
 }
 
-char Menu::getGameMode()
+int Menu::getGameMode()
 {
     return gameMode;
 }
