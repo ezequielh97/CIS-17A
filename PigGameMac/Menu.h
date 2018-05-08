@@ -22,7 +22,6 @@ public:
     int getMax();
     // MISC:
     void display();
-    void edit(); // Edit the game settings if you want to
 };
 
 
@@ -33,7 +32,7 @@ public:
 Menu::Menu()
 {  
         max = 100; // Initializes max score
-        gameMode = 'A'; // Initializes Game Mode
+        gameMode = 0; // Initializes Game Mode
         
         
            char choice; // The user's input choice
@@ -45,12 +44,11 @@ Menu::Menu()
            
            
            
-           if(gameMode == 1 || gameMode == 2)
+           if(gameMode == 1 || gameMode == 2) // Input validation
            { 
                setGameMode(gameMode);
            }
-           if(gameMode == 3)
-               edit();
+           
     }
 
 void Menu::display()
@@ -58,7 +56,6 @@ void Menu::display()
         cout << "MENU:" << endl;
         cout << "[1] - Single Player Mode" << endl;
         cout << "[2] - Multiplayer Mode" << endl;
-        cout << "[3] - Change Game Settings" << endl;
         cout << "Enter Choice: ";
     }
 
@@ -80,10 +77,4 @@ int Menu::getGameMode()
 int Menu::getMax()
 {
     return max;
-}
-
-void Menu::edit()
-{
-    // Another menu to edit the settings if the user would want to
-    cout << "This part of the menu is under construction" << endl;
 }

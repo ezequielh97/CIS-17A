@@ -129,7 +129,7 @@ void Double::game()
             cout << "PLAYER " << i + 1 << endl;
             player[i].Turn();
             
-            if(player[i].getRollOne() == true && player[i].SnakeEyes() == false)
+            if(player[i].getRollOne() == true && (player[i].SnakeEyes() == false || player[i].getNumDie() == 1))
             {
                 cout << "One of your die landed on 1, you lose your turn!" << endl;
                 setRoundPoints();
@@ -137,21 +137,25 @@ void Double::game()
                 player[i].setTurn(false);
                 player[i].rollAgain();
             }
-            
+            else if(player[i].getRollOne() == true && player[i].SnakeEyes() == true && player[i].getNumDie != 1)
+            {
+                cout << "All of your dice landed on 1! You lose all of  your points." << endl;
+                player[i].setTotalPoints(0);
+            }
+            else if(player[i].getRollOne() == false && player[i].SnakeEyes() == false)
+            {
+                setRoundPoints();
+                cout << "POINTS THIS ROUND: " << roundPoints << endl;
+                cout << "TOTAL POINTS: " << player[i].getTotalPoints() << endl;
+                player[i].rollAgain();
+            }
             
             
             
         }while(turn == true);
         
         
-        
-        
-        
-        
-        
         if(i == (numPlayers - 1))
             i = -1;
     }
-    
-    
 }

@@ -27,7 +27,7 @@ public:
     
     Core(int num)
     {
-        this-> numDie = num;
+        numDie = num;
         die = new Die[num];
         snakeEyes = new bool[num];
         totalPoints = 0;
@@ -55,7 +55,9 @@ public:
     void rollAgain();
     void setTurn(bool);
     bool getRollOne();
-  
+    int getNumDie();
+    void setTotalPoints(int);
+    
 };
 
 void Core::game()
@@ -215,4 +217,14 @@ void Core::rollAgain()
 void Core::setTurn(bool turn)
 {
     this->turn = turn;
+}
+
+int Core::getNumDie()
+{
+    return numDie; 
+}
+
+void Core::setTotalPoints(int i)
+{
+    totalPoints = i;
 }
