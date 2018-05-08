@@ -7,21 +7,20 @@ using namespace std;
 class Menu
 {
 private:
-    int gameMode;
+    int gameMode; // Single player or Multiplayer
     int max;
 
 public:
-    // CONSTRUCTORS:
-    Menu();
    
-    // SETTERS:
+    Menu(); // Default Constructor
+   
     void setGameMode(int);
     void setMax(int);
-    // GETTERS
+    
     int getGameMode();
     int getMax();
-    // MISC:
-    void display();
+    
+    void display(); // Displays the menu
 };
 
 
@@ -40,15 +39,12 @@ Menu::Menu()
            cin >> gameMode; // User inputs their choice here
            
            
-           // VALIDATE USER INPUT FOR CHOICE, USE EXCEPTION
+           // *VALIDATE USER INPUT FOR CHOICE, USE EXCEPTION*
            
            
            
-           if(gameMode == 1 || gameMode == 2) // Input validation
-           { 
+           if(gameMode == 1 || gameMode == 2) //*Add input validation  here*
                setGameMode(gameMode);
-           }
-           
     }
 
 void Menu::display()
@@ -60,21 +56,13 @@ void Menu::display()
     }
 
 void Menu::setGameMode(int mode)
-{
-    gameMode = mode;
-}
+{ gameMode = mode; }
 
 void Menu::setMax(int max)
-{
-    this->max = max;
-}
+{ this->max = max; }
 
 int Menu::getGameMode()
-{
-    return gameMode;
-}
+{ return gameMode; }
 
 int Menu::getMax()
-{
-    return max;
-}
+{ return max; }

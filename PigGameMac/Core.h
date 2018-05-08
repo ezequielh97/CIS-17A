@@ -12,9 +12,34 @@ protected:
     int totalPoints, max, numDie, highScore, tries;
 
 public:
-    // CONSTRUCTORS:
-    Core()
-    {
+    Core();
+    Core(int);
+    ~Core();
+    
+    void game();
+    void Turn();
+    void DisplayRules();
+    void rollAgain();
+    bool SnakeEyes();
+    
+    void setNumDie();
+    void setMax();
+    void setHighScore();
+    void setTurn(bool);
+    void setTotalPoints(int);
+    
+    int getTotalPoints();
+    int getNumDie();
+    bool getTurn();
+    bool getRollOne();
+};
+
+
+//******************************************************************************
+// FUNCTION DEFENITIONS:
+//******************************************************************************
+Core::Core()
+{
         numDie = 0;
         totalPoints = 0;
         highScore = 0;
@@ -23,10 +48,10 @@ public:
         rollOne = false;
         turn = true;
         die = new Die[numDie];
-    }
-    
-    Core(int num)
-    {
+}
+
+Core::Core(int num)
+{
         numDie = num;
         die = new Die[num];
         snakeEyes = new bool[num];
@@ -39,26 +64,13 @@ public:
         tries = 1;
         highScore = 0;
         max = 100;
-    }
-    
-    
-    void setNumDie();
-    void setMax();
-    void setHighScore();
-    int getTotalPoints();
-    bool getTurn();
+}
 
-    void Turn();
-    bool SnakeEyes();
-    void game();
-    void displayRules();
-    void rollAgain();
-    void setTurn(bool);
-    bool getRollOne();
-    int getNumDie();
-    void setTotalPoints(int);
+Core::~Core()
+{
     
-};
+}
+
 
 void Core::game()
 {
@@ -93,13 +105,6 @@ void Core::game()
     } while(turn == true);
 }
 
-
-
-
-
-
-
-
 void Core::Turn()
 {
     rollOne = false;
@@ -123,28 +128,6 @@ void Core::Turn()
     cout << "Current Total: " << totalPoints << endl;
 } // END TURN FUNCTION
 
-
-
-bool Core::SnakeEyes()
-{
-    bool trueFalse = true; 
-    for(int i = 0; i < numDie; i++)
-    {
-        if(snakeEyes[i] != 1) // If one of the die doesn't equal 1, player doesn't lose all their points
-            trueFalse = false;
-    }
-    
-    return trueFalse; // Returns true or false
-}
-
-
-
-void Core::setHighScore()
-{
-    if(totalPoints >= highScore)
-        highScore = totalPoints;
-}
-
 void Core::displayRules()
 {
     char anyChar;
@@ -158,22 +141,31 @@ void Core::displayRules()
     cin >> anyChar;
 }
 
-
-int Core::getTotalPoints()
+void Core::rollAgain()
 {
-    return totalPoints();
+    int choice;
+        cout << "Would you like to roll again? Enter 1 for yes or 2 for no: ";
+        cin >> choice;
+        if(choice == 1)
+            turn = true;
+        else if(choice == 2)
+        {
+            turn = false;
+            cout << "Turn over. Score: " << totalPoints << endl;
+        }
 }
 
-bool Core::getRollOne()
+bool Core::SnakeEyes()
 {
-    return rollOne;
+    bool trueFalse = true; 
+    for(int i = 0; i < numDie; i++)
+    {
+        if(snakeEyes[i] != 1) // If one of the die doesn't equal 1, player doesn't lose all their points
+            trueFalse = false;
+    }
+    
+    return trueFalse; // Returns true or false
 }
-
-bool Core::getTurn()
-{
-    return turn;
-}
-
 
 
 void Core::setNumDie()
@@ -200,31 +192,27 @@ void Core::setMax()
     }
 }
 
-void Core::rollAgain()
+void Core::setHighScore()
 {
-    int choice;
-        cout << "Would you like to roll again? Enter 1 for yes or 2 for no: ";
-        cin >> choice;
-        if(choice == 1)
-            turn = true;
-        else if(choice == 2)
-        {
-            turn = false;
-            cout << "Turn over. Score: " << totalPoints << endl;
-        }
+    if(totalPoints >= highScore)
+        highScore = totalPoints;
 }
 
 void Core::setTurn(bool turn)
-{
-    this->turn = turn;
-}
-
-int Core::getNumDie()
-{
-    return numDie; 
-}
+{ this->turn = turn; }
 
 void Core::setTotalPoints(int i)
-{
-    totalPoints = i;
-}
+{ totalPoints = i; }
+
+
+int Core::getTotalPoints()
+{ return totalPoints(); }
+
+int Core::getNumDie()
+{ return numDie; }
+
+bool Core::getTurn()
+{ return turn; }
+
+bool Core::getRollOne()
+{ return rollOne; }

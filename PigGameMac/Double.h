@@ -16,11 +16,16 @@ public:
     ~Double(); // Destructor
     
     void game(); // The multiplayer game happens here
-    void setPlayers(); // Gets the number of players playing
     void displayRules(); // Displays the rules to the users
-    void setRoundPoints();
+    
+    void setRoundPoints(); // Sets the points for that round
+    void setPlayers(); // Gets the number of players playing
 };
 
+
+//******************************************************************************
+// FUNCTION DEFENITIONS:
+//******************************************************************************
 Double::Double()
 {
         numDie = 0;
@@ -115,13 +120,12 @@ void Double::displayRules()
         cout << "If all of the dice land on 1, the player will lose ALL of their points." << endl;
         cout << "The first person to make it to " << max << " wins." << endl;
     }
-        
 }
 
 void Double::game()
 {
-    int count;
-    for(int i = 0; i < numPlayers; i++)
+    int count; // To keep a count of total points for subtraction later to get roundPoints
+    for(int i = 0; i < numPlayers; i++) // For loop for each player's turn
     {
         count = player[i].getTotalPoints();
         do
@@ -149,13 +153,10 @@ void Double::game()
                 cout << "TOTAL POINTS: " << player[i].getTotalPoints() << endl;
                 player[i].rollAgain();
             }
-            
-            
-            
-        }while(turn == true);
+        }while(turn == true); // End of do-while loop
         
-        
-        if(i == (numPlayers - 1))
+     
+        if(i == (numPlayers - 1)) // If it gets to the last player, i becomes -1 so that it become 0 when the loop iterates
             i = -1;
-    }
+    } // End of the for loop
 }
