@@ -136,8 +136,8 @@ void Double::game()
             if(player[i].getRollOne() == true && (player[i].SnakeEyes() == false || player[i].getNumDie() == 1))
             {
                 cout << "One of your die landed on 1, you lose your turn!" << endl;
-                setRoundPoints();
-                cout << "You lost your " << roundPoints << " points. Your total is currently: " << player[i].getTotalPoints() << endl;
+                setRoundPoints(count,i);
+                cout << "You lost your " << roundPoints[i] << " points. Your total is currently: " << player[i].getTotalPoints() << endl;
                 player[i].setTurn(false);
                 player[i].rollAgain();
             }
@@ -148,8 +148,8 @@ void Double::game()
             }
             else if(player[i].getRollOne() == false && player[i].SnakeEyes() == false)
             {
-                setRoundPoints();
-                cout << "POINTS THIS ROUND: " << roundPoints << endl;
+                setRoundPoints(count, i);
+                cout << "POINTS THIS ROUND: " << roundPoints[i] << endl;
                 cout << "TOTAL POINTS: " << player[i].getTotalPoints() << endl;
                 player[i].rollAgain();
             }
@@ -159,4 +159,10 @@ void Double::game()
         if(i == (numPlayers - 1)) // If it gets to the last player, i becomes -1 so that it become 0 when the loop iterates
             i = -1;
     } // End of the for loop
+}
+void Double:: setRoundPoints(int c, int x)
+{
+    (player[x].getTotalPoints() - c ) = roundPoints[x];
+
+    
 }
