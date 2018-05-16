@@ -182,7 +182,11 @@ void Core::setMax()
     int choice;
     cout << "Your goal is currently 100 points. Press 1 to continue or 2 to change the goal: ";
     cin >> choice;
-    
+    do {
+		cout << "Invalid Input /n Try Again" << endl;
+		cin >> choice;
+
+	} while (choice != 1 || choice != 2);
     if(choice == 1)
         max = 100;
     if(choice == 2)
