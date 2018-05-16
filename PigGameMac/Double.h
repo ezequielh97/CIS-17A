@@ -100,7 +100,11 @@ void Double::setPlayers()
     int choice;
  cout << "You are set on 2 player mode. Press 1 to continue or 2 to add players: ";
  cin >> choice;
- 
+ do {
+		cout << "Invalid Input /n Try Again" << endl;
+		cin >> choice;
+
+	} while (choice != 1 || choice != 2);
  if(choice == 1)
      numPlayers = 2;
  else if(choice == 2)
