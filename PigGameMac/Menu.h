@@ -40,10 +40,14 @@ Menu::Menu()
            
            
            // *VALIDATE USER INPUT FOR CHOICE, USE EXCEPTION*
+           do{
+		cout << "Invalid Input /n Try Again" << endl;
+		cin >> gameMode;
+
+	} while (gameMode != 1 || gameMode != 2);
            
            
-           
-           if(gameMode == 1 || gameMode == 2) //*Add input validation  here*
+           //if(gameMode == 1 || gameMode == 2) //*Add input validation  here*
                setGameMode(gameMode);
     }
 
