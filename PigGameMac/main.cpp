@@ -1,4 +1,5 @@
 #include "Menu.h" // iostream is in Menu.h
+#include "Double.h"
 
 
 int main()
@@ -11,7 +12,7 @@ int main()
     std::cin >> numDie; // User inputs the number of dice
     
     if(menu.getGameMode() == 1) // If user chooses 1, it creates a Core object
-      Core game(numDie);
-    else
-      Double game(numDie); // If user chooses 2, it creates a Double object (multiplayer)
+        Core core(numDie);
+    else if(menu.getGameMode() == 2)
+        Double dub(numDie); // If user chooses 2, it creates a Double object (multiplayer)
 }

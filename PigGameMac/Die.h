@@ -1,19 +1,19 @@
 #pragma once
 #include <cstdlib> // To get random numbers
+#include <ctime>
 
 class Die
 {
 private:
     int result; // The number the die lands on
     int sides; // The number of sides of the die
-
+    
 public:
     Die();
     
     int getSides();
     int getResult();
     
-    int setSides();
     void roll();
 };
 
@@ -33,7 +33,10 @@ int Die::getResult()
 { return result; }
 
 void Die::roll()
-  {
-    result = rand() % sides + 1; // Get a stronger number generator
-  }
+{
+    srand(time(0));
+    int random = rand();
+    srand(random);
+    result = (rand() % 6) + 1;
+}
 
